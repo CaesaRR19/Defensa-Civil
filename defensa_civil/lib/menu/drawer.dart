@@ -1,3 +1,14 @@
+import 'package:defensa_civil/home/home.dart';
+import 'package:defensa_civil/pages/about/about.dart';
+import 'package:defensa_civil/pages/be_volunteer/be_volunteer.dart';
+import 'package:defensa_civil/pages/hostels/hostels.dart';
+import 'package:defensa_civil/pages/hostels_map/hostels_map.dart';
+import 'package:defensa_civil/pages/members/members.dart';
+import 'package:defensa_civil/pages/news/news.dart';
+import 'package:defensa_civil/pages/preventive_measures/preventive_measures.dart';
+import 'package:defensa_civil/pages/services/services.dart';
+import 'package:defensa_civil/pages/story/story.dart';
+import 'package:defensa_civil/pages/videos/videos.dart';
 import 'package:flutter/material.dart';
 
 class NavigationDrawerMenu extends StatelessWidget {
@@ -26,7 +37,7 @@ class NavigationDrawerMenu extends StatelessWidget {
       child: const Column(children: [
         CircleAvatar(
           radius: 52,
-          backgroundImage:  AssetImage("assets/images/logo_dc.png"),
+          backgroundImage: AssetImage("assets/images/logo_dc.png"),
         ),
         SizedBox(height: 12),
         Text(
@@ -49,63 +60,85 @@ class NavigationDrawerMenu extends StatelessWidget {
           children: [
             ListTile(
               leading: const Icon(Icons.home_outlined),
-              title: const Text("Home" ),
-              onTap: () {},
-
+              title: const Text("Inicio"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomePage())),
             ),
             ListTile(
-              leading: const Icon(Icons.favorite_outline),
-              title: const Text("Home"),
-              onTap: () {},
+              leading: const Icon(Icons.lightbulb_outlined),
+              title: const Text("Servicios"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Services())),
             ),
             ListTile(
-              leading: const Icon(Icons.link_outlined),
-              title: const Text("Home"),
-              onTap: () {},
+              leading: const Icon(Icons.groups_outlined),
+              title: const Text("Miembros"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Members())),
             ),
             ListTile(
-              leading: const Icon(Icons.info_outlined),
-              title: const Text("Home"),
-              onTap: () {},
+              leading: const Icon(Icons.apartment_outlined),
+              title: const Text("Historia"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Story())),
             ),
             ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text("Home"),
-              onTap: () {},
+              leading: const Icon(Icons.newspaper_outlined),
+              title: const Text("Noticias"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const News())),
             ),
             ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text("Home"),
-              onTap: () {},
+              leading: const Icon(Icons.videocam_outlined),
+              title: const Text("Videos"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Videos())),
             ),
             ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text("Home"),
-              onTap: () {},
+              leading: const Icon(Icons.report_outlined),
+              title: const Text("Medidas Preventivas"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (context) => const PreventiveMeasures())),
             ),
             ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text("Home"),
-              onTap: () {},
+              leading: const Icon(Icons.gite),
+              title: const Text("Albergues"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Hostels())),
+            ),
+            ListTile(
+              leading: const Icon(Icons.map_outlined),
+              title: const Text("Mapa de Albergues"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HostelsMap())),
             ),
             const Divider(
               color: Colors.black54,
             ),
             ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text("Home"),
-              onTap: () {},
+              iconColor: Colors.blue.shade700,
+              textColor: Colors.blue.shade700,
+              leading: const Icon(Icons.volunteer_activism_outlined),
+              title: const Text("Quiero Ser Voluntario"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const BeVolunteer())),
             ),
             ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text("Home"),
-              onTap: () {},
+              iconColor: Colors.orange.shade800,
+              textColor: Colors.orange.shade800,
+              leading: const Icon(Icons.info_outline),
+              title: const Text("Acerca de"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const About())),
             ),
             ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text("Home"),
-              onTap: () {},
-            ),
+              iconColor: Colors.red.shade800,
+              textColor: Colors.red.shade800,
+              leading: const Icon(Icons.logout_outlined),
+              title: const Text("Cerrar Sesión"),
+              onTap: () => (),
+            )
           ],
         ));
   }
