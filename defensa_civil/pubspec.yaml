@@ -1,16 +1,19 @@
 name: defensa_civil
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: ">=3.2.6"
 
 dependencies:
+  crypto: ^3.0.3
   flutter:
     sdk: flutter
   http: ^1.2.1
   url_launcher: ^6.2.6
+  carousel_slider: ^4.0.0
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -21,3 +24,11 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/emergency_preparation.png
+    - assets/images/flood_response.jpg
+    - assets/images/recovery_support.jpg
+    - assets/images/Cristian.jpeg
+    - assets/images/Endrik.jpg
+    - assets/images/Valerie.jpeg
+    - assets/images/Cesar.png
+    - assets/images/Loren.jpeg
