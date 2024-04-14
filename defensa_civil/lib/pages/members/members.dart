@@ -14,7 +14,6 @@ class Members extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
         drawer: const NavigationDrawerMenu(),
-
         body: MembersBody(),
         );
   }

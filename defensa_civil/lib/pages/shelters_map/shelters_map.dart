@@ -1,22 +1,20 @@
 import 'package:defensa_civil/menu/drawer.dart';
-import 'package:defensa_civil/pages/videos/videos_body.dart';
 import 'package:flutter/material.dart';
+import 'shelters_map_body.dart';
 
-class Videos extends StatelessWidget {
-  const Videos({super.key});
+class HostelsMap extends StatelessWidget {
+  const HostelsMap({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Videos"),
+          title: const Text("Mapa de albergues"),
           backgroundColor: Colors.blue.shade700,
           foregroundColor: Colors.white,
         ),
         drawer: const NavigationDrawerMenu(),
-        //FAVOR AQUI PONER EL DESARROLLO DE TU WIDGET Y TU PARTE
-        //AQUI IRÁ VIDEOS_BODY
-        body: VideosBody(),
+        body: AlbergueMap()
         );
   }
 }
