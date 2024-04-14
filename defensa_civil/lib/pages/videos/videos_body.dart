@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:defensa_civil/pages/videos/video_container.dart'; // Importa VideosContainer
 
 class VideosBody extends StatefulWidget {
   @override
@@ -50,11 +51,10 @@ class _VideosBodyState extends State<VideosBody> {
   }
 
   Widget _buildVideoItem(dynamic video) {
-    // Construir la URL de la miniatura del video
     String videoId = video['link'];
     String thumbnailUrl = 'https://img.youtube.com/vi/$videoId/hqdefault.jpg';
 
-    double fontSize = MediaQuery.of(context).size.width * 0.04; 
+    double fontSize = MediaQuery.of(context).size.width * 0.04;
 
     return Card(
       child: Column(
@@ -76,13 +76,26 @@ class _VideosBodyState extends State<VideosBody> {
             subtitle: Text(
               video['descripcion'],
               style: TextStyle(
-                fontSize: fontSize * 0.8, 
+                fontSize: fontSize * 0.8,
               ),
             ),
           ),
           ElevatedButton(
             onPressed: () {
-              _launchURL('https://www.youtube.com/watch?v=$videoId');
+             showModalBottomSheet(
+                context: context,
+                backgroundColor: const Color.fromARGB(254, 25, 1, 64),
+                isScrollControlled: true,
+                builder: (BuildContext context) {
+                  return Center(
+                    child: ModalVideos(
+                      name: video['titulo'], // Usa el título del video como nombre
+                      details: video['descripcion'], // Usa la descripción del video como detalles
+                      youtubeUrl: 'https://www.youtube.com/watch?v=$videoId', // Construye la URL de YouTube
+                    ),
+                  );
+                },
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,
