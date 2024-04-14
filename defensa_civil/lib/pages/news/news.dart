@@ -1,4 +1,5 @@
 import 'package:defensa_civil/menu/drawer.dart';
+import 'package:defensa_civil/pages/news/news_body.dart';
 import 'package:flutter/material.dart';
 
 class News extends StatelessWidget {
@@ -15,7 +16,7 @@ class News extends StatelessWidget {
         drawer: const NavigationDrawerMenu(),
         //FAVOR AQUI PONER EL DESARROLLO DE TU WIDGET Y TU PARTE
         //AQUI IRÁ NEWS_BODY
-        body: null //NewsBody ,
+        body: NewsBody() ,
         );
   }
 }
