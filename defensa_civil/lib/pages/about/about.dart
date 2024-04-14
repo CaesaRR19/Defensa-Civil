@@ -1,5 +1,6 @@
 import 'package:defensa_civil/menu/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:defensa_civil/pages/about/about_body.dart';
 
 class About extends StatelessWidget {
   const About({super.key});
@@ -15,7 +16,7 @@ class About extends StatelessWidget {
         drawer: const NavigationDrawerMenu(),
         //FAVOR AQUI PONER EL DESARROLLO DE TU WIDGET Y TU PARTE
         //AQUI IRÁ ABOUT_BODY
-        body: null //AboutBody ,
+        body: AboutBody() //AboutBody ,
         );
   }
 }
