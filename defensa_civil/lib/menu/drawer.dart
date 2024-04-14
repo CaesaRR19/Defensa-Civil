@@ -1,5 +1,6 @@
 import 'package:defensa_civil/home/home.dart';
 import 'package:defensa_civil/pages/about/about.dart';
+import 'package:defensa_civil/pages/addsituation/formsituation.dart';
 import 'package:defensa_civil/pages/be_volunteer/be_volunteer.dart';
 import 'package:defensa_civil/pages/hostels/hostels.dart';
 import 'package:defensa_civil/pages/hostels_map/hostels_map.dart';
@@ -104,6 +105,14 @@ class NavigationDrawerMenu extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const PreventiveMeasures())),
             ),
+            ListTile(
+              leading: const Icon(Icons.report_outlined),
+              title: const Text("Reportar Situación"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (context) => const Fsituation())),
+            ),
+
             ListTile(
               leading: const Icon(Icons.gite),
               title: const Text("Albergues"),
