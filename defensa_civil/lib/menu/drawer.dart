@@ -3,6 +3,7 @@ import 'package:defensa_civil/pages/about/about.dart';
 import 'package:defensa_civil/pages/be_volunteer/be_volunteer.dart';
 import 'package:defensa_civil/pages/hostels/hostels.dart';
 import 'package:defensa_civil/pages/hostels_map/hostels_map.dart';
+import 'package:defensa_civil/pages/login/auth_provider.dart';
 import 'package:defensa_civil/pages/login/login.dart';
 import 'package:defensa_civil/pages/members/members.dart';
 import 'package:defensa_civil/pages/news/news.dart';
@@ -11,6 +12,7 @@ import 'package:defensa_civil/pages/services/services.dart';
 import 'package:defensa_civil/pages/story/story.dart';
 import 'package:defensa_civil/pages/videos/videos.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NavigationDrawerMenu extends StatelessWidget {
   const NavigationDrawerMenu({super.key});
@@ -146,7 +148,23 @@ class NavigationDrawerMenu extends StatelessWidget {
               textColor: Colors.red.shade800,
               leading: const Icon(Icons.logout_outlined),
               title: const Text("Cerrar Sesión"),
-              onTap: () => (),
+              onTap: () async {
+                var authProvider =
+                    Provider.of<AuthProvider>(context, listen: false);
+                if (authProvider.isAuthenticated) {
+                  authProvider.logout();
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const Login()),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Sesión finalizada')),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('No has iniciado sesión.')),
+                  );
+                }
+              },
             )
           ],
         ));
