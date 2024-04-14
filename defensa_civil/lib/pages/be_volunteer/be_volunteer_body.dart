@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:crypto/crypto.dart'; // Importar crypto para hashing
 
 class BeVolunteerBody extends StatefulWidget {
   const BeVolunteerBody({super.key});
@@ -25,7 +26,7 @@ class BeVolunteerBodyState extends State<BeVolunteerBody> {
     request.fields['cedula'] = _idController.text;
     request.fields['nombre'] = _nameController.text;
     request.fields['apellido'] = _surnameController.text;
-    request.fields['clave'] = _passwordController.text;
+    request.fields['clave'] = _hashPassword(_passwordController.text);
     request.fields['correo'] = _emailController.text;
     request.fields['telefono'] = _phoneNumberController.text;
 
@@ -67,6 +68,12 @@ class BeVolunteerBodyState extends State<BeVolunteerBody> {
         );
       },
     );
+  }
+
+  String _hashPassword(String password) {
+    var bytes = utf8.encode(password);
+    var digest = sha256.convert(bytes);
+    return digest.toString();
   }
 
   @override
