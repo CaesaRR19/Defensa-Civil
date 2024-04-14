@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.2.1
+  carousel_slider: ^4.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -21,3 +23,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/emergency_preparation.png
+    - assets/images/flood_response.jpg
+    - assets/images/recovery_support.jpg
+
