@@ -1,5 +1,6 @@
 import 'package:defensa_civil/menu/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:defensa_civil/pages/preventive_measures/preventive_measures_body.dart';
 
 class PreventiveMeasures extends StatelessWidget {
   const PreventiveMeasures({super.key});
@@ -15,7 +16,7 @@ class PreventiveMeasures extends StatelessWidget {
         drawer: const NavigationDrawerMenu(),
         //FAVOR AQUI PONER EL DESARROLLO DE TU WIDGET Y TU PARTE
         //AQUI IRÁ PREVENTIVE_MEASURES_BODY
-        body: null //PreventiveMeasuresBody ,
+        body: const PreventiveMeasuresBody() //PreventiveMeasuresBody ,
         );
   }
 }
