@@ -1,4 +1,5 @@
 import 'package:defensa_civil/menu/drawer.dart';
+import 'package:defensa_civil/pages/members/members_body.dart';
 import 'package:flutter/material.dart';
 
 class Members extends StatelessWidget {
@@ -13,9 +14,8 @@ class Members extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
         drawer: const NavigationDrawerMenu(),
-        //FAVOR AQUI PONER EL DESARROLLO DE TU WIDGET Y TU PARTE
-        //AQUI IRÁ MEMBERS_BODY
-        body: null //MembersBody ,
+
+        body: MembersBody(),
         );
   }
 }
