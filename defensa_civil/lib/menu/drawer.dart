@@ -3,6 +3,7 @@ import 'package:defensa_civil/pages/about/about.dart';
 import 'package:defensa_civil/pages/be_volunteer/be_volunteer.dart';
 import 'package:defensa_civil/pages/hostels/hostels.dart';
 import 'package:defensa_civil/pages/hostels_map/hostels_map.dart';
+import 'package:defensa_civil/pages/login/login.dart';
 import 'package:defensa_civil/pages/members/members.dart';
 import 'package:defensa_civil/pages/news/news.dart';
 import 'package:defensa_civil/pages/preventive_measures/preventive_measures.dart';
@@ -115,6 +116,14 @@ class NavigationDrawerMenu extends StatelessWidget {
             ),
             const Divider(
               color: Colors.black54,
+            ),
+            ListTile(
+              iconColor: Colors.green.shade700,
+              textColor: Colors.green.shade700,
+              leading: const Icon(Icons.login),
+              title: const Text("Iniciar Sesión"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Login())),
             ),
             ListTile(
               iconColor: Colors.blue.shade700,
