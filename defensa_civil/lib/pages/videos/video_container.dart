@@ -85,7 +85,7 @@ class ModalVideos extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const SizedBox(height: 40),
+          const SizedBox(height: 100),
           Text(
             name,
             style: const TextStyle(
