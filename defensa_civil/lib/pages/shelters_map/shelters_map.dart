@@ -1,5 +1,6 @@
 import 'package:defensa_civil/menu/drawer.dart';
 import 'package:flutter/material.dart';
+import 'shelters_map_body.dart';
 
 class HostelsMap extends StatelessWidget {
   const HostelsMap({super.key});
@@ -13,9 +14,7 @@ class HostelsMap extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
         drawer: const NavigationDrawerMenu(),
-        //FAVOR AQUI PONER EL DESARROLLO DE TU WIDGET Y TU PARTE
-        //AQUI IRÁ HOSTELS_MAP_BODY
-        body: null //HostelsMapBody ,
+        body: AlbergueMap()
         );
   }
 }
