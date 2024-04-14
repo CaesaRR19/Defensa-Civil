@@ -67,7 +67,7 @@ class _ServicesBodyState extends State<ServicesBody> {
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                               image: index == 0
-                                ? AssetImage('assets/images/imagen1_services.jpg') as ImageProvider<Object> // Convertimos explícitamente a ImageProvider<Object>
+                                ? AssetImage('assets/images/imagen1_servicios.jpg') as ImageProvider<Object> // Convertimos explícitamente a ImageProvider<Object>
                                 : NetworkImage(services[index]['foto']),
                               fit: BoxFit.cover,
                             ),
