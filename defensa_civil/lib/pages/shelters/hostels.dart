@@ -1,4 +1,5 @@
 import 'package:defensa_civil/menu/drawer.dart';
+import 'package:defensa_civil/pages/shelters/hostels_body.dart';
 import 'package:flutter/material.dart';
 
 class Hostels extends StatelessWidget {
@@ -15,7 +16,7 @@ class Hostels extends StatelessWidget {
         drawer: const NavigationDrawerMenu(),
         //FAVOR AQUI PONER EL DESARROLLO DE TU WIDGET Y TU PARTE
         //AQUI IRÁ HOSTELS_BODY
-        body: null //HostelsBody ,
+        body: const HostelsBody() //HostelsBody ,
         );
   }
 }
