@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:defensa_civil/home/home.dart';
 import 'package:defensa_civil/pages/login/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -41,6 +42,11 @@ class LoginBodyState extends State<LoginBody> {
               apellido: responseData['datos']['apellido'],
               correo: responseData['datos']['correo'],
               telefono: responseData['datos']['telefono']);
+
+          if (context.mounted) {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const HomePage()));
+          }
         } else {
           _showDialog(
               'Error', 'El inicio de sesión falló: ${responseData['mensaje']}');
