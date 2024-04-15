@@ -18,7 +18,10 @@ class MainApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => AuthProvider()),
         ],
         child: const MaterialApp(
-          home: Scaffold(body: HomePage()),
-        ));
+            home: Scaffold(
+              body: HomePage(),
+            ),
+            // It looked weird with the Debug Banner, so I put it away.
+            debugShowCheckedModeBanner: false));
   }
 }

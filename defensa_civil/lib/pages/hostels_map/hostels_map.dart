@@ -1,8 +1,8 @@
 import 'package:defensa_civil/menu/drawer.dart';
 import 'package:flutter/material.dart';
 
-class HostelsMap extends StatelessWidget {
-  const HostelsMap({super.key});
+class HostelsMapTem extends StatelessWidget {
+  const HostelsMapTem({super.key});
 
   @override
   Widget build(BuildContext context) {

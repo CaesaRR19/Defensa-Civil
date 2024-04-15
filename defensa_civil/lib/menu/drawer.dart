@@ -2,6 +2,9 @@ import 'package:defensa_civil/home/home.dart';
 import 'package:defensa_civil/pages/about/about.dart';
 import 'package:defensa_civil/pages/addsituation/formsituation.dart';
 import 'package:defensa_civil/pages/be_volunteer/be_volunteer.dart';
+import 'package:defensa_civil/pages/change_password/change_password.dart';
+import 'package:defensa_civil/pages/shelters/hostels.dart';
+import 'package:defensa_civil/pages/shelters_map/shelters_map.dart';
 import 'package:defensa_civil/pages/hostels/hostels.dart';
 import 'package:defensa_civil/pages/hostels_map/hostels_map.dart';
 import 'package:defensa_civil/pages/login/auth_provider.dart';
@@ -57,6 +60,7 @@ class NavigationDrawerMenu extends StatelessWidget {
   }
 
   Widget buildMenuItems(BuildContext context) {
+    var authProvider = Provider.of<AuthProvider>(context, listen: false);
     return Container(
         padding: const EdgeInsets.all(24),
         child: Wrap(
@@ -136,6 +140,16 @@ class NavigationDrawerMenu extends StatelessWidget {
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const Login())),
             ),
+            if (authProvider.isAuthenticated)
+              ListTile(
+                iconColor: Colors.indigo.shade500,
+                textColor: Colors.indigo.shade500,
+                leading: const Icon(Icons.password),
+                title: const Text("Cambiar Contraseña"),
+                onTap: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                        builder: (context) => const ChangePassword())),
+              ),
             ListTile(
               iconColor: Colors.blue.shade700,
               textColor: Colors.blue.shade700,
@@ -158,8 +172,6 @@ class NavigationDrawerMenu extends StatelessWidget {
               leading: const Icon(Icons.logout_outlined),
               title: const Text("Cerrar Sesión"),
               onTap: () async {
-                var authProvider =
-                    Provider.of<AuthProvider>(context, listen: false);
                 if (authProvider.isAuthenticated) {
                   authProvider.logout();
                   Navigator.of(context).pushReplacement(
