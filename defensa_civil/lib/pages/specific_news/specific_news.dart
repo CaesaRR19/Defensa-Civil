@@ -10,7 +10,7 @@ class SpecificNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Noticias"),
+          title: const Text("Noticias Especificas"),
           backgroundColor: Colors.blue.shade700,
           foregroundColor: Colors.white,
         ),

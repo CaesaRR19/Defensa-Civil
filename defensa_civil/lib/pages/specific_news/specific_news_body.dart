@@ -21,19 +21,22 @@ class _SpecificNewsBodyState extends State<SpecificNewsBody> {
 
   Future<void> getSpecificNews() async {
     var authProvider = Provider.of<AuthProvider>(context, listen: false);
-    var uri =
-    Uri.parse('https://adamix.net/defensa_civil/def/noticias_especificas.php');
+    var uri = Uri.parse(
+        'https://adamix.net/defensa_civil/def/noticias_especificas.php');
     var request = http.MultipartRequest('POST', uri);
     request.fields['token'] = authProvider.token!;
-      var streamedResponse = await request.send();
-      final response = await http.Response.fromStream(streamedResponse);
+    var streamedResponse = await request.send();
+    final response = await http.Response.fromStream(streamedResponse);
 
-      if (response.statusCode == 200) {
+    if (response.statusCode == 200) {
+      setState(() {
         var responseData = jsonDecode(response.body);
+
         if (responseData['exito'] == true) {
-        specificNews = json.decode(response.body)['datos'];
-     } 
-      }
+          specificNews = json.decode(response.body)['datos'];
+        }
+      });
+    }
   }
 
   @override
