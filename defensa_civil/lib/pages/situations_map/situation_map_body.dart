@@ -86,6 +86,7 @@ class SituationsMapState extends State<SituationsMap> {
       appBar: AppBar(
         title: const Text('Mapa de Mis Situaciones', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
       drawer: NavigationDrawerMenu(),
       body: situations.isEmpty
