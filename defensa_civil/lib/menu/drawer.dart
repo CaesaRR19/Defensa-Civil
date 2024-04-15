@@ -14,6 +14,7 @@ import 'package:defensa_civil/pages/preventive_measures/preventive_measures.dart
 import 'package:defensa_civil/pages/services/services.dart';
 import 'package:defensa_civil/pages/story/story.dart';
 import 'package:defensa_civil/pages/videos/videos.dart';
+import 'package:defensa_civil/pages/getsituation/getsituation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -100,6 +101,12 @@ class NavigationDrawerMenu extends StatelessWidget {
               title: const Text("Videos"),
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const Videos())),
+            ),
+              ListTile(
+              leading: const Icon(Icons.announcement_outlined),
+              title: const Text("Mis Situaciones"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const GSituation())),
             ),
             ListTile(
               leading: const Icon(Icons.report_outlined),
