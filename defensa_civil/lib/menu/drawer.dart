@@ -39,23 +39,24 @@ class NavigationDrawerMenu extends StatelessWidget {
   }
 
   Widget buildHeader(BuildContext context) {
+    var authProvider = Provider.of<AuthProvider>(context, listen: false);
     return Container(
       color: Colors.blue.shade700,
       padding:
           EdgeInsets.only(top: MediaQuery.of(context).padding.top, bottom: 24),
-      child: const Column(children: [
-        CircleAvatar(
+      child: Column(children: [
+        const CircleAvatar(
           radius: 52,
           backgroundImage: AssetImage("assets/images/logo_dc.png"),
         ),
-        SizedBox(height: 12),
-        Text(
+        const SizedBox(height: 12),
+        const Text(
           "Defensa Civil",
           style: TextStyle(fontSize: 28, color: Colors.white),
         ),
         Text(
-          "Bienvenido/a",
-          style: TextStyle(fontSize: 16, color: Colors.white),
+          "Bienvenido/a ${authProvider.nombre ?? ""}",
+          style: const TextStyle(fontSize: 16, color: Colors.white),
         )
       ]),
     );
@@ -68,6 +69,13 @@ class NavigationDrawerMenu extends StatelessWidget {
         child: Wrap(
           runSpacing: 16,
           children: [
+            const Text(
+              "General",
+              style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.blue,
+                  fontWeight: FontWeight.w700),
+            ),
             ListTile(
               leading: const Icon(Icons.home_outlined),
               title: const Text("Inicio"),
@@ -99,43 +107,11 @@ class NavigationDrawerMenu extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const News())),
             ),
             ListTile(
-              leading: const Icon(Icons.newspaper_outlined),
-              title: const Text("Noticias Especificas"),
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const SpecificNews())),
-            ),
-            ListTile(
               leading: const Icon(Icons.videocam_outlined),
               title: const Text("Videos"),
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const Videos())),
-            ),ListTile(
-              leading: const Icon(Icons.announcement_outlined),
-              title: const Text("Mis Situaciones"),
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const GSituation())),
             ),
-              ListTile(
-              leading: const Icon(Icons.announcement_outlined),
-              title: const Text("Mapa de Mis Situaciones"),
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const SituationsMap())),
-            ),
-            ListTile(
-              leading: const Icon(Icons.report_outlined),
-              title: const Text("Medidas Preventivas"),
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (context) => const PreventiveMeasures())),
-            ),
-            ListTile(
-              leading: const Icon(Icons.report_outlined),
-              title: const Text("Reportar Situación"),
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (context) => const Fsituation())),
-            ),
-
             ListTile(
               leading: const Icon(Icons.gite),
               title: const Text("Albergues"),
@@ -148,17 +124,56 @@ class NavigationDrawerMenu extends StatelessWidget {
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const HostelsMap())),
             ),
+            ListTile(
+              leading: const Icon(Icons.report_outlined),
+              title: const Text("Medidas Preventivas"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (context) => const PreventiveMeasures())),
+            ),
             const Divider(
               color: Colors.black54,
             ),
-            ListTile(
-              iconColor: Colors.green.shade700,
-              textColor: Colors.green.shade700,
-              leading: const Icon(Icons.login),
-              title: const Text("Iniciar Sesión"),
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const Login())),
-            ),
+            if (authProvider.isAuthenticated) ...{
+              const Text(
+                "Opciones de Perfil",
+                style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.w700),
+              ),
+              ListTile(
+                leading: const Icon(Icons.newspaper_outlined),
+                title: const Text("Noticias Especificas"),
+                onTap: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                        builder: (context) => const SpecificNews())),
+              ),
+              ListTile(
+                leading: const Icon(Icons.report_outlined),
+                title: const Text("Reportar Situación"),
+                onTap: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                        builder: (context) => const Fsituation())),
+              ),
+              ListTile(
+                leading: const Icon(Icons.announcement_outlined),
+                title: const Text("Mis Situaciones"),
+                onTap: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                        builder: (context) => const GSituation())),
+              ),
+              ListTile(
+                leading: const Icon(Icons.map_outlined),
+                title: const Text("Mapa Situaciones"),
+                onTap: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                        builder: (context) => const SituationsMap())),
+              ),
+              const Divider(
+                color: Colors.black54,
+              ),
+            },
             if (authProvider.isAuthenticated)
               ListTile(
                 iconColor: Colors.indigo.shade500,
@@ -185,27 +200,37 @@ class NavigationDrawerMenu extends StatelessWidget {
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const About())),
             ),
-            ListTile(
-              iconColor: Colors.red.shade800,
-              textColor: Colors.red.shade800,
-              leading: const Icon(Icons.logout_outlined),
-              title: const Text("Cerrar Sesión"),
-              onTap: () async {
-                if (authProvider.isAuthenticated) {
-                  authProvider.logout();
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const Login()),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Sesión finalizada')),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('No has iniciado sesión.')),
-                  );
-                }
-              },
-            )
+            if (!authProvider.isAuthenticated)
+              ListTile(
+                iconColor: Colors.green.shade700,
+                textColor: Colors.green.shade700,
+                leading: const Icon(Icons.login),
+                title: const Text("Iniciar Sesión"),
+                onTap: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const Login())),
+              ),
+            if (authProvider.isAuthenticated)
+              ListTile(
+                iconColor: Colors.red.shade800,
+                textColor: Colors.red.shade800,
+                leading: const Icon(Icons.logout_outlined),
+                title: const Text("Cerrar Sesión"),
+                onTap: () async {
+                  if (authProvider.isAuthenticated) {
+                    authProvider.logout();
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => const Login()),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Sesión finalizada')),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('No has iniciado sesión.')),
+                    );
+                  }
+                },
+              )
           ],
         ));
   }
