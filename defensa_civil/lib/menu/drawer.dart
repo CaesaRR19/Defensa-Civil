@@ -17,6 +17,8 @@ import 'package:defensa_civil/pages/videos/videos.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../pages/Specific_news/Specific_news.dart';
+
 class NavigationDrawerMenu extends StatelessWidget {
   const NavigationDrawerMenu({super.key});
 
@@ -94,6 +96,12 @@ class NavigationDrawerMenu extends StatelessWidget {
               title: const Text("Noticias"),
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const News())),
+            ),
+            ListTile(
+              leading: const Icon(Icons.newspaper_outlined),
+              title: const Text("Noticias Especificas"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const SpecificNews())),
             ),
             ListTile(
               leading: const Icon(Icons.videocam_outlined),
