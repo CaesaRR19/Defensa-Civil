@@ -3,8 +3,6 @@ import 'package:defensa_civil/pages/about/about.dart';
 import 'package:defensa_civil/pages/addsituation/formsituation.dart';
 import 'package:defensa_civil/pages/be_volunteer/be_volunteer.dart';
 import 'package:defensa_civil/pages/change_password/change_password.dart';
-import 'package:defensa_civil/pages/shelters/hostels.dart';
-import 'package:defensa_civil/pages/shelters_map/shelters_map.dart';
 import 'package:defensa_civil/pages/hostels/hostels.dart';
 import 'package:defensa_civil/pages/hostels_map/hostels_map.dart';
 import 'package:defensa_civil/pages/login/auth_provider.dart';
