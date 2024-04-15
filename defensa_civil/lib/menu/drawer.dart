@@ -1,5 +1,6 @@
 import 'package:defensa_civil/home/home.dart';
 import 'package:defensa_civil/pages/about/about.dart';
+import 'package:defensa_civil/pages/addsituation/formsituation.dart';
 import 'package:defensa_civil/pages/be_volunteer/be_volunteer.dart';
 import 'package:defensa_civil/pages/change_password/change_password.dart';
 import 'package:defensa_civil/pages/shelters/hostels.dart';
@@ -14,8 +15,11 @@ import 'package:defensa_civil/pages/preventive_measures/preventive_measures.dart
 import 'package:defensa_civil/pages/services/services.dart';
 import 'package:defensa_civil/pages/story/story.dart';
 import 'package:defensa_civil/pages/videos/videos.dart';
+import 'package:defensa_civil/pages/getsituation/getsituation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../pages/Specific_news/Specific_news.dart';
 
 class NavigationDrawerMenu extends StatelessWidget {
   const NavigationDrawerMenu({super.key});
@@ -96,10 +100,22 @@ class NavigationDrawerMenu extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const News())),
             ),
             ListTile(
+              leading: const Icon(Icons.newspaper_outlined),
+              title: const Text("Noticias Especificas"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const SpecificNews())),
+            ),
+            ListTile(
               leading: const Icon(Icons.videocam_outlined),
               title: const Text("Videos"),
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const Videos())),
+            ),
+              ListTile(
+              leading: const Icon(Icons.announcement_outlined),
+              title: const Text("Mis Situaciones"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const GSituation())),
             ),
             ListTile(
               leading: const Icon(Icons.report_outlined),
@@ -108,6 +124,14 @@ class NavigationDrawerMenu extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const PreventiveMeasures())),
             ),
+            ListTile(
+              leading: const Icon(Icons.report_outlined),
+              title: const Text("Reportar Situación"),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (context) => const Fsituation())),
+            ),
+
             ListTile(
               leading: const Icon(Icons.gite),
               title: const Text("Albergues"),
